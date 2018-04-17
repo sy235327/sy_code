@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="spring-web-4.2.4.RELEASE">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/spring-web-4.2.4.RELEASE.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.ideaLibSources/spring-web-4.2.4.RELEASE-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

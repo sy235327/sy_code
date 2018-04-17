@@ -1,0 +1,19 @@
+<component name="libraryTable">
+  <library name="spring-beans-4.2.4.RELEASE">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/spring-beans-4.2.4.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/spring-context-4.2.4.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/spring-core-4.2.4.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/spring-expression-4.2.4.RELEASE.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://D:/BaiduNetdiskDownload/jar包和工具/框架/spring/spring jar-all" />
+      <root url="jar://D:/BaiduNetdiskDownload/jar包和工具/框架/spring/spring jar-all/spring-framework-4.2.4.RELEASE-dist.zip!/" />
+      <root url="jar://D:/BaiduNetdiskDownload/jar包和工具/框架/spring/spring jar-all/spring-framework-3.0.2.RELEASE-dependencies.zip!/" />
+      <root url="file://D:/BaiduNetdiskDownload/jar包和工具/框架/spring/spring jar-all/spring-framework-4.2.4.RELEASE" />
+      <root url="file://D:/BaiduNetdiskDownload/jar包和工具/框架/spring/spring jar-all/spring-framework-3.0.2.RELEASE-dependencies" />
+      <root url="jar://$USER_HOME$/.ideaLibSources/spring-context-4.2.4.RELEASE-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <!--基本配置-->
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/hibernate_day2</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">123</property>
+
+    <!--可选配置-->
+    <property name="hibernate.show_sql">true</property>
+    <property name="hibernate.format_sql">true</property>
+    <property name="hibernate.hbm2ddl.auto">update</property>
+
+    <!--将session放入线程中，从线程中获取session-->
+    <property name="hibernate.current_session_context_class">thread</property>
+
+    <!--
+      设置数据库的隔离级别，就使用默认就可以了
+        1—Read uncommitted isolation
+        2—Read committed isolation
+        4—Repeatable read isolation
+        8—Serializable isolation
+    -->
+    <!--<property name="hibernate.connection.isolation">4</property>-->
+
+
+    <!--映射文件-->
+    <!--<mapping resource="com/demo/domain/Customer.hbm.xml"/>-->
+    <!--<mapping resource="com/demo/domain/Linkman.hbm.xml"/>-->
+
+    <mapping resource="com/demo/domain/User.hbm.xml" />
+    <mapping resource="com/demo/domain/Role.hbm.xml" />
+  </session-factory>
+</hibernate-configuration>

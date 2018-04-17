@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <package name="crm" namespace="/" extends="struts-default">
+        <!--配置拦截器-->
+        <interceptors>
+            <interceptor name="UserInterceptor" class="com.demo.interceptor.UserInterceptor" />
+        </interceptors>
+
+        <!--全局的跳转的页面-->
+        <global-results>
+            <result name="login">/login.htm</result>
+        </global-results>
+
+        <!--用户模块-->
+        <action name="user_*" class="com.demo.action.UserAction" method="{1}">
+            <!--<result name="login">/login.htm</result>-->
+            <result name="success">/index.jsp</result>
+            <interceptor-ref name="UserInterceptor" >
+                <!--
+                    <param name="excludeMethods">login</param>
+                    name : excludeMethods表示指定的值对应的action方法不拦截
+                            includeMethods表示指定的值对应的action方法拦截
+                -->
+                <param name="excludeMethods">login</param>
+            </interceptor-ref>
+            <interceptor-ref name="defaultStack" />
+        </action>
+
+
+        <!--客户模块-->
+        <action name="customer_*" class="com.demo.action.CustomerAction" method="{1}">
+            <result name="success">/index.jsp</result>
+            <result name="list">/jsp/customer/list.jsp</result>
+            <interceptor-ref name="UserInterceptor" >
+                <!--<param name="excludeMethods">list</param>-->
+            </interceptor-ref>
+            <interceptor-ref name="defaultStack" />
+        </action>
+    </package>
+</struts>

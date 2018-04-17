@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+      <!--配置类和表结构的映射-->
+    <!--
+        name: 配置javabean的全路径
+        table：数据库中的数据表名
+    -->
+    <class name="com.demo.domain.Linkman" table="cst_linkman">
+        <!--配置id(数据库中的主键映射javabean中的属性)-->
+        <!--
+        后续配置中的属性
+        name: javabean中的属性
+        column: 表结构中的字段
+        如果javabean中的属性和字段相同可以只写name
+        -->
+        <id name="lkm_id" column="lkm_id">
+            <!--主键的生成策略，class: native由Hibernate根据底层数据库自行判断采用identity、hilo、sequence
+其中一种作为主键生成方式。-->
+            <generator class="native"></generator>
+        </id>
+
+        <!--配置其他的属性-->
+        <property name="lkm_name" column="lkm_name"/>
+
+        <property name="lkm_gender"  column="lkm_gender"/>
+        <property name="lkm_phone" column="lkm_phone"/>
+        <property name="lkm_mobile"  column="lkm_mobile"/>
+        <property name="lkm_email" column="lkm_email"/>
+        <property name="lkm_qq" column="lkm_qq" />
+        <property name="lkm_position" column="lkm_position" />
+        <property name="lkm_memo" column="lkm_memo" />
+
+        <!--外键不能和普通字段一样配置,需要将其绑定到主表对象-->
+        <!--<property name="lkm_cust_id" column="lkm_cust_id"/>-->
+
+        <!--
+            先配置多方
+            name     当前表中JavaBean的主表属性(就是在多方里面设置的一方的属性)
+            class    主表属性的全路径
+            cloumn   外键的字段(绑定外键,相当于操作一方表中的对象时底层操作的是外键)
+            cascade  级联保存和跟新(保存一方同时可以把关联的对象也保存到数据库中,级联删除)
+        -->
+        <many-to-one name="customer" class="com.demo.domain.Customer"
+                         column="lkm_cust_id" cascade="save-update"/>
+    </class>
+</hibernate-mapping>

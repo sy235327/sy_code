@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="com.demo.domain.Role" table="sys_role">
+
+        <id name="rid" column="rid">
+            <generator class="native"></generator>
+        </id>
+
+        <property name="rname" column="rname"/>
+
+        <!--
+            配置多对多
+            多对多需要操作对象修改数据,必须有一方放弃(一般都是那个表用的少那方放弃)
+        -->
+        <set name="users" table="sys_user_role" inverse="true">
+            <key column="rid"></key>
+            <many-to-many class="com.demo.domain.User" column="uid"/>
+        </set>
+    </class>
+</hibernate-mapping>

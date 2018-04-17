@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--写SQL语句
+    命名空间 user.findUserById
+    命名空间 orders.findUserById
+-->
+<mapper namespace="com.demo.mapper.OrderMapper">
+    <!--<select id="selectOrdersList" resultType="Orders">-->
+
+    <!--
+        使用resultMap手动映射(可以只写javabean和数据库字段名称不一样的,一样的不用写,半自动映射)
+        type: javabean路径
+        id: 在<select>标签中resultMap的属性值(标签就会找对应的手动映射标签)
+            子标签<id>:
+                property: javabean属性
+                column: 数据库字段
+                javatype: javabean属性类型
+                jdbctype: 数据库字段类型
+            子标签<result>
+                property: javabean属性
+                column: 数据库字段
+                javatype: javabean属性类型
+                jdbctype: 数据库字段类型
+    -->
+    <resultMap type="Orders" id="orders">
+        <!--<id property="id" column="id" />-->
+        <result property="userId" column="user_id"/>
+<!--        <result property="number" column="number"/>
+        <result property="createtime" column="createtime"/>
+        <result property="note" column="note"/>-->
+    </resultMap>
+    <select id="selectOrdersList" resultMap="orders">
+      SELECT * FROM orders
+    </select>
+
+    <!--
+    查询一张表可以省略让框架自动对应名称加载,但是一对一或者一对多需要手动把<result>标签配置好映射
+        <collection>一对多标签
+
+        <association>一对一标签
+            property: javabean中的对象属性名
+            javaType: 对象类型
+
+            <result>子标签 和外面的写法一样直接写对象的属性对应的数据库字段
+    -->
+    <resultMap id="ordersAndUser" type="Orders">
+        <id property="id" column="id"/>
+        <result property="userId" column="user_id" />
+        <result property="number" column="number" />
+        <result property="createtime" column="createtime" />
+        <result property="note" column="note" />
+        <!--一对一-->
+        <association property="user" javaType="User">
+            <id property="id" column="user_id"/>
+            <result property="username" column="username" />
+        </association>
+    </resultMap>
+    <select id="selectOrders" resultMap="ordersAndUser">
+      SELECT
+      orders.id,
+      orders.user_id,
+      orders.number,
+      orders.createtime,
+      orders.note,
+      user.username
+      FROM orders
+      LEFT JOIN user
+      ON orders.user_id = user.id
+    </select>
+
+
+    <!--
+    一对多需要手动配置好映射
+        <collection>一对多映射标签
+            其他属性意思一样
+            ofType 是指集合中每一个元素的类型
+    -->
+    <resultMap id="user" type="User" >
+        <id property="id" column="user_id"/>
+        <result property="username" column="username" />
+
+        <!--一对多-->
+        <collection property="ordersList" ofType="Orders">
+            <id property="id" column="id" />
+            <result property="userId" column="user_id"/>
+            <result property="number" column="number"/>
+            <result property="createtime" column="createtime"/>
+        </collection>
+    </resultMap>
+    <!--一对多-->
+    <select id="selectUserList" resultMap="user">
+        SELECT
+        orders.id,
+        orders.user_id,
+        orders.number,
+        orders.createtime,
+        user.username
+        FROM user
+        LEFT JOIN orders
+        ON orders.user_id = user.id
+    </select>
+</mapper>

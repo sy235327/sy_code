@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+
+    <!--加载配置文件-->
+    <properties resource="jdbc.properties" />
+
+    <!--别名 在Mapper.xml中parameterType,resultType属性的参数类型可以直接写别名不需要写全路径了-->
+    <typeAliases>
+        <!--<typeAlias type="com.demo.mybatis1.entity.User" alias="User"/>-->
+
+        <!--直接配置包名,会扫面包下面的子包和类,在Mapper.xml中可以直接写别名(类名)-->
+        <package name="com.demo.mybatis1.entity"></package>
+    </typeAliases>
+
+    <!-- 和spring整合后 environments配置将废除 -->
+    <environments default="development">
+        <environment id="development">
+            <!-- 使用jdbc事务管理 -->
+            <transactionManager type="JDBC" />
+            <!-- 数据库连接池 -->
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}" />
+                <property name="url" value="${jdbc.url}" />
+                <property name="username" value="${jdbc.username}" />
+                <property name="password" value="${jdbc.password}" />
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!--Mapper文件的位置-->
+    <mappers>
+        <!--resource和class以及url只能出现一个-->
+        <!--<mapper resource="sqlmap/User.xml" class="" url=""/>-->
+
+        <!--使用class指向UserMapper接口(),需要接口名称和Mapper.xml配置文件名称一样,在同一个目录下-->
+        <!--<mapper class="com.demo.mapper.UserMapper"/>-->
+
+        <!--指定Mapper.xml配置文件的绝对路径-->
+        <!--<mapper url="" />-->
+
+        <!--指定包,会自动扫描包下面的子包加载配置文件-->
+        <package name="com.demo.mapper" />
+    </mappers>
+</configuration>

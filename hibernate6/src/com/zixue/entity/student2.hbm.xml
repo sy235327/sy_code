@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+   <class name="com.zixue.entity.student2" table="student2">
+      <id name="id" column="id">
+        <generator class="native"></generator>
+      </id>
+      <property name="name" column="name"/>
+      <property name="age" column="age"/>
+      <property name="phone" column="phone"/>
+      <property name="eamil" column="eamil"/>
+      <!-- 一对多配置 多方 -->
+         <many-to-one name="tea" class="com.zixue.entity.teacher" column="clid"></many-to-one>
+   </class>
+
+</hibernate-mapping>

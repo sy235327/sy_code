@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+    写SQL语句
+    namespace命名空间 user.findUserById
+    namespace命名空间 orders.findUserById
+    namespace实际开发中应该直接指向Dao层接口,将其捆绑在一起,生成dao层的垃圾代码
+-->
+<mapper namespace="com.demo.mapper.UserMapper">
+    <!--
+        通过id查询一个用户
+        id 根据mapper标签的命名空间和id属性的值来调用那条sql语句
+        parameterType 参数类型(如果是自定义的对象需要写全路径,基本类型和String以及集合这些被取了别名不需要写全路径)
+        resultType 查询后接收数据 使用什么类型接收,如果是集合接收写泛型的全路径就OK(如果是自定义的对象需要写全路径,基本类型和String以及集合这些被取了别名不需要写全路径)
+    -->
+    <select id="findUserById" parameterType="Integer" resultType="User">
+      SELECT * FROM user WHERE id=#{id}
+    </select>
+
+    <!--
+        根据用户名模糊查询用户列表
+        #{}占位符: SELECT * FROM user WHERE id=#{id}  占位符 ? == '王五'
+        ${}字符串拼接: SELECT * FROM user WHERE username LIKE '%${value}%' 字符串拼接 不带''号,必须使用value放入${}中
+    -->
+    <select id="findUserByUserName" parameterType="String" resultType="com.demo.mybatis1.entity.User">
+      SELECT * FROM user WHERE username LIKE '%${value}%'
+    </select>
+
+    <!--
+        添加用户
+        #{username} 相当于直接是 对象.getXxx()方法
+
+        添加用户后返回用户的id
+        在<insert>标签中写一个<selectKey>标签 SELECT  LAST_INSERT_ID() 保存客户返回保存客户的id
+        keyProperty  语句结果(保存数据的主键)应该被设置的目标属性(User对象的id)。
+        order 有两个属性
+            AFTER属性:先保存数据在保存id(mysql使用自动增长,就使用这个)
+            BEFORE属性: 先保存id在保存数据(oracle数据库选择这个,还有mysql使用uuid自己传递id也使用这个)
+    -->
+    <insert id="insertUser" parameterType="User">
+      <selectKey keyProperty="id" resultType="Integer" order="AFTER">
+          SELECT  LAST_INSERT_ID()
+      </selectKey>
+
+      INSERT INTO user(username,birthday,address,sex)
+      VALUES(#{username},#{birthday},#{address},#{sex})
+    </insert>
+
+    <!--
+        根据id修改用户
+        参数类型为user对象
+        将user对象的id作为添加
+    -->
+    <update id="updateUser" parameterType="com.demo.mybatis1.entity.User">
+        UPDATE user SET username=#{username},birthday=#{birthday},sex=#{sex},address=#{address} WHERE id=#{id}
+    </update>
+
+    <delete id="deleteUser" parameterType="Integer">
+        DELETE FROM user WHERE id=#{id}
+    </delete>
+</mapper>

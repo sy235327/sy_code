@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <!--
+        编写常量
+        有default.properties文件中设置了常量的默认值,如果我们需要自定义常量有三种方式
+        1.在src目录下new一个 default.properties文件编写常量(一般开发中不会这样)
+        2.在struts.xml配置中写一个constant标签 设置常量(开发中一般选择这个方式)
+        3.在web.xml中的filter标签下配置一个 <init-param>标签设置常量
+
+        <constant>标签
+            name : 常量名
+            value : 值
+
+            struts.action.extension 常量作用是访问路径的后缀 默认值action,,
+    -->
+    <!--<constant name="struts.action.extension" value="do,," />-->
+
+
+    <!--开启动态方法访问-->
+    <constant name="struts.enable.DynamicMethodInvocation" value="true" />
+
+
+    <!--
+        包结构
+        name : 包名这个随意,不能相同
+        namespace: 名称空间 / 下面的action
+        extends : 继承struts-default.xml的配置(固定的)
+    -->
+    <package name="default" namespace="/" extends="struts-default">
+        <!--
+             配置action(类似servlet抽取)
+             name : Action访问的路径(和<package>标签中的namespce属性一起决定访问路径)
+             class : Action类路径 (默认值是 ActionSupport类)
+             method : Action类中那个方法(默认值是 execute)
+        -->
+        <action name="hello" class="com.demo.action.HelloAction" method="sayHello">
+            <!--
+                配置跳转的页面,路径写法: 在struts2框架中,不管是转发还是重定向,都不用写项目名(只要写相对路径)
+                <result name="">跳转的页面</result>
+                name : Action方法中return的字符串
+                type : 决定是重定向还是请求转发(默认是请求转发)
+            -->
+            <result name="ok" type="redirect">/demo1/suc.jsp</result>
+        </action>
+
+        <!--
+            POJO类的方式
+            默认是使用execute方法,不需要设置method属性
+            页面不跳转 不需要在action标签下面添加<result>标签
+        -->
+        <action name="demo1Action" class="com.demo.action1.Demo1Action"></action>
+
+        <!--实现Action接口的方式-->
+        <action name="demo2Action" class="com.demo.action1.Demo2Action">
+            <result name="success">/demo1/suc.jsp</result>
+        </action>
+
+        <!--继承ActionSupport类,重写父类已经重写的默认execute()方法,默认方法不需要配置method-->
+        <action name="demo3Action" class="com.demo.action1.Demo3Action"></action>
+    </package>
+
+    <!--演示Action的访问-->
+    <package name="customer" namespace="/" extends="struts-default">
+        <!--传统方式(每有一个请求路径,需要配置一条action)-->
+        <!--配置save方法-->
+        <action name="save" class="com.demo.action2.CustomerAction" method="save"></action>
+        <!--配置delete方法-->
+        <action name="delete" class="com.demo.action2.CustomerAction" method="delete"></action>
+
+        <!--
+            通配符的方式
+            name : * 号是通配符(以此为例子linkman_save,linkman_后面的save字符就是*)
+            class : action文件路径
+            method : {1}表示第一个 * ({2}表示第二个 * ,以此类推,以此为例linkman_save,那么method值就是save)
+        -->
+        <action name="linkman_*" class="com.demo.action2.LinkmanAction" method="{1}"></action>
+
+        <!--配置动态的方法访问 method属性不需要编写了-->
+        <action name="user" class="com.demo.action2.UserAction" />
+
+    </package>
+
+
+    <!--引入其他的配置文件 分包管理-->
+    <include file="com/demo/user/struts_user.xml" />
+
+</struts>

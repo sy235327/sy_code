@@ -1,0 +1,17 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="hibernate_day3:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/hibernate_day3_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="hibernate_day3" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="antlr-2.7.7" />
+          <element id="library" level="module" name="JUnit4" module-name="hibernate_day3" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="hibernate_day3/web/Web" />
+    </root>
+  </artifact>
+</component>

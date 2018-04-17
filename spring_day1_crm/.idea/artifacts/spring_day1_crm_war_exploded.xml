@@ -1,0 +1,18 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="spring_day1_crm:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/spring_day1_crm_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="spring_day1_crm" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="struts2" />
+          <element id="library" level="project" name="log4j_logging" />
+          <element id="library" level="project" name="spring" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="spring_day1_crm/web/Web" />
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,81 @@
+<component name="libraryTable">
+  <library name="asm-3.3">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/asm-3.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/asm-commons-3.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/asm-tree-3.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/commons-fileupload-1.3.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/commons-io-2.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/commons-lang3-3.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/freemarker-2.3.22.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/javassist-3.11.0.GA.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/log4j-api-2.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/log4j-core-2.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/ognl-3.0.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/struts2-core-2.3.24.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/xwork-core-2.3.24.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/apps/blank/src/main/java" />
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/apps/blank/src/test/java" />
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/apps/mailreader/src/main/java" />
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/apps/portlet/src/main/java" />
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/apps/portlet/src/test/java" />
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/apps/rest-showcase/src/main/java" />
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/apps/rest-showcase/src/test/java" />
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/apps/showcase/src/main/java" />
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/apps/showcase/src/test/java" />
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/core/src/main/java" />
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/core/src/test/java" />
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/plugins/cdi/src/main/java" />
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/plugins/cdi/src/test/java" />
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/plugins/codebehind/src/main/java" />
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/plugins/codebehind/src/test/java" />
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/plugins/config-browser/src/main/java" />
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/plugins/convention/src/main/java" />
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/plugins/convention/src/test/java" />
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/plugins/dojo/src/main/java" />
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/plugins/dojo/src/test/java" />
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/plugins/dwr/src/main/java" />
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/plugins/embeddedjsp/src/main/java" />
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/plugins/embeddedjsp/src/test/java" />
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/plugins/gxp/src/main/java" />
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/plugins/jasperreports/src/main/java" />
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/plugins/java8-support/src/main/java" />
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/plugins/javatemplates/src/main/java" />
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/plugins/javatemplates/src/test/java" />
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/plugins/jfreechart/src/main/java" />
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/plugins/jfreechart/src/test/java" />
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/plugins/jsf/src/main/java" />
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/plugins/json/src/main/java" />
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/plugins/json/src/test/java" />
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/plugins/junit/src/main/java" />
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/plugins/junit/src/test/java" />
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/plugins/osgi/src/main/java" />
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/plugins/osgi/src/test/java" />
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/plugins/oval/src/main/java" />
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/plugins/oval/src/test/java" />
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/plugins/pell-multipart/src/main/java" />
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/plugins/plexus/src/main/java" />
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/plugins/portlet-tiles/src/main/java" />
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/plugins/portlet/src/main/java" />
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/plugins/portlet/src/test/java" />
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/plugins/rest/src/main/java" />
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/plugins/rest/src/test/java" />
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/plugins/sitegraph/src/main/java" />
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/plugins/sitegraph/src/test/java" />
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/plugins/sitemesh/src/main/java" />
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/plugins/spring/src/main/java" />
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/plugins/spring/src/test/java" />
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/plugins/struts1/src/main/java" />
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/plugins/struts1/src/test/java" />
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/plugins/testng/src/main/java" />
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/plugins/testng/src/test/java" />
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/plugins/tiles3/src/main/java" />
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/plugins/tiles/src/main/java" />
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/xwork-core/src/main/java" />
+      <root url="jar://D:/BaiduNetdiskDownload/【阶段07】Struts2/day32-Struts2/资料/struts2/struts-2.3.24-all.zip!/struts-2.3.24/src/xwork-core/src/test/java" />
+    </SOURCES>
+  </library>
+</component>

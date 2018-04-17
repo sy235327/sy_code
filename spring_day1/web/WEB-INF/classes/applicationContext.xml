@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd"
+
+       schema约束,xmlns只能写一次,如果需要写多个xmlns,需要给xmlns去别名(别名随意定义)
+       如果使用了一个默认(没有取别名的名称空间)xmlns名称空间的约束直接<标签名>即可,
+       使用取别名的名称空间格式 <别名:标签名>
+
+       自定义名称空间 xmlns:p ="http://www.springframework.org/schema/p"
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+        使用bean标签
+        id          名称不能重复,不允许特殊符号,框架创建完对象存储到容器中,通过id名称取对象
+        class       java文件路径
+        name        作用和id一样允许特殊符号,id和name只要写一个(struts1框架访问必须要带/xxxaction,才会使用name属性)
+
+        scope       对象生命周期
+                    singleton,      单例对象(默认值)整个运行的环境中只有一个实咧
+                    prototype,      多例对象,action必须是多例(一个请求一个action对象)
+                    request,        每次请求创建一个实例,放到request中,生命周期和request一样
+                    session,        session创建时创建一个实例,放到session中,生命周期和session一样
+                    globalsession   集群,全局session(单点登录项目,在一个服务器部署的项目下登录,其他的服务器上部署的项目会自动登录)
+
+        init-method 实例初始化时调用的方法
+        destory-method 实例销毁时调用的方法
+    -->
+    <bean id="userService" class="com.demo.text1.UserServiceImpl" scope="prototype">
+        <!--
+            设置依赖(给属性赋值,提供set方法)
+            通过property标签赋值
+            name    属性名称
+            value   字符串的属性值
+            ref     对象属性值
+        -->
+        <property name="name" value="大桥未久"/>
+    </bean>
+
+
+    <!--演示依赖注入-->
+    <bean id="CustomerDao" class="com.demo.test2.CustomerDaoImpl"></bean>
+    <bean id="CustomerService" class="com.demo.test2.CustomerServiceImpl">
+        <!--依赖注入给属性赋值 ref对象属性值-->
+        <property name="CustomerDao" ref="CustomerDao"/>
+    </bean>
+
+    <!--
+        演示构造方法的注入方式
+        <constructor-arg> 向构造器中注入
+            name 属性名称
+            index 和name差不多都是选择那个属性注入,但是使用时索引的方式
+            value 注入的值
+            ref 对象
+    -->
+    <bean id="car1" class="com.demo.test3.Car1">
+        <!--
+            <constructor-arg name="cname" value="玛莎拉蒂"></constructor-arg>
+            <constructor-arg name="price" value="1000000"></constructor-arg>
+        -->
+        <constructor-arg index="0" value="大黄蜂"/>
+        <constructor-arg index="1" value="121111"/>
+    </bean>
+    <!--在构造方法中注入对象-->
+    <bean id="person" class="com.demo.test3.Person">
+        <constructor-arg name="car1" ref="car1"/>
+        <constructor-arg name="pname" value="张三" />
+    </bean>
+
+    <!--<bean id="car2" class="com.demo.test3.Car2">
+        <property name="cname" value="国宴"/>
+        <property name="price" value="2000000"/>
+    </bean>-->
+
+    <!--使用p名称空间注入的方式(自己导入的名称空间)-->
+    <!--<p:bean id="car2" class="com.demo.test3.Car2" p:cname="宝马" p:price="1"/>-->
+
+    <!--使用SPEL方式注入-->
+    <bean id="car2" class="com.demo.test3.Car2">
+        <property name="cname" value="#{'单车'}" />
+        <property name="price" value="#{4000}" />
+    </bean>
+
+    <!--
+        注入集合
+        <property>标签
+        name 属性名
+
+        <property>子标签
+            <list>  只要是数组和list集合都是用list标签
+                <list>标签的子标签<value>标签,放基本类型和字符串类型
+                <list>标签的子标签<ref>标签,bean属性放对象
+
+            <set> set集合和list一样
+
+            <map> map集合子标签<entry>标签赋值
+                 <entry>标签key属性给key赋值基本类型和字符串,value一样只不过给value赋值
+                    key-ref和value-ref属性赋值对象
+
+            <properties>配置标签子标签<props>
+                <props>子标签<prop>标签 key配置名称 直接在中间写值
+    -->
+    <!--<bean id="user" class="com.demo.test3.User">
+        &lt;!&ndash;set集合&ndash;&gt;
+        <property name="arrs">
+            <list>
+                <value>a</value>
+                <value>b</value>
+                <value>c</value>
+            </list>
+        </property>
+
+        &lt;!&ndash;list集合&ndash;&gt;
+        <property name="list">
+            <list>
+                &lt;!&ndash;<ref bean="car2" />&ndash;&gt;
+                <value>q</value>
+                <value>w</value>
+                <value>e</value>
+            </list>
+        </property>
+
+        &lt;!&ndash;map集合&ndash;&gt;
+        <property name="map">
+            <map >
+                <entry key="a" value="小苍"></entry>
+                <entry key="b" value="小泽"></entry>
+            </map>
+        </property>
+
+        &lt;!&ndash;Properties配置标签&ndash;&gt;
+        <property name="pro">
+            <props>
+                <prop key="username">root</prop>
+                <prop key="password">1234</prop>
+            </props>
+        </property>
+    </bean>-->
+
+    <!--引入其他的配置文件-->
+    <import resource="applicationContext2.xml" />
+</beans>

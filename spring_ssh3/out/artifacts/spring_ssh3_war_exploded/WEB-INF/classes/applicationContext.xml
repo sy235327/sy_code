@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop.xsd
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<!--先配置C3P0的连接池-->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" >
+		<property name="driverClass" value="com.mysql.jdbc.Driver" />
+		<property name="jdbcUrl" value="jdbc:mysql:///ssh_day4" />
+		<property name="user" value="root" />
+		<property name="password" value="123" />
+	</bean>
+
+	<!--LocalSessionFactoryBean加载配置文件-->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<!--注入配置-->
+		<property name="dataSource" ref="dataSource" />
+		<!--加载方言,加载可选项-->
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+			</props>
+		</property>
+		
+		<!--引入映射的配置文件-->
+		<property name="mappingResources">
+			<list>
+				<value>com/demo/domain/Customer.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+
+
+	<!--先配置平台事务管理器-->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!--开启事务的注解-->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+
+
+	<!--配置action-->
+	<!--action需要配置多例-->
+	<bean id="customerAction" class="com.demo.web.action.CustomerAction" scope="prototype">
+		<property name="customerService" ref="customerService" />
+	</bean>
+
+	<!--配置客户模块-->
+	<bean id="customerService" class="com.demo.service.CustomerServiceImpl">
+		<property name="customerDao" ref="customerDao" />
+	</bean>
+
+	<!--以后Dao: 都需要继承HibernateDaoSupport,注入sessionFactory-->
+	<bean id="customerDao" class="com.demo.dao.CustomerDaoImpl">
+		<!--<property name="hibernateTemplate" ref="hibernateTemplate" />-->
+
+		<!--继承HibernateDaoSupport类可以直接注入 sessionFactory-->
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+
+
+	<!--配置HibernateTemplate模板类-->
+	<!--<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate" >-->
+		<!--<property name="sessionFactory" ref="sessionFactory" /> 可以不写底层实现了,判断是否配置了模板类-->
+	<!--</bean>-->
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+

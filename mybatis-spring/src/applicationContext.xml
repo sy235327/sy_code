@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+    <!--加载配置文件-->
+    <context:property-placeholder location="classpath:db.properties" />
+
+    <!--dbcp 连接池-->
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+          destroy-method="close">
+        <property name="driverClassName" value="${jdbc.driver}" />
+        <property name="url" value="${jdbc.url}" />
+        <property name="username" value="${jdbc.username}" />
+        <property name="password" value="${jdbc.password}" />
+        <property name="maxActive" value="10" />
+        <property name="maxIdle" value="5" />
+    </bean>
+
+    <!--
+        mybatis的工厂
+        就是将这段代码由spring框架处理
+         String resource = "sqlMapConfig.xml";
+         InputStream inResource = Resources.getResourceAsStream(resource);
+         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inResource);
+    -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean" >
+        <property name="dataSource" ref="dataSource" />
+        <!--核心配置文件的位置-->
+        <property name="configLocation" value="classpath:sqlMapConfig.xml" />
+    </bean>
+
+    <!--Dao原始Dao-->
+    <bean id="userDao" class="com.demo.dao.UserDaoImpl">
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+
+    <!--
+        使用MyBatis的动态代理开发
+        配置sqlSessionFactory对象和Mapper接口全限定名,通过sqlSession动态生成一个Mapper接口实现类
+            动态生成Mapper接口的实现类
+            就是将这段代码由spring框架处理
+            SqlSession sqlSession = sqlSessionFactory.openSession();
+            OrderMapper mapper = sqlSession.getMapper(OrderMapper.class);
+    -->
+    <!--<bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+        <property name="mapperInterface" value="com.demo.mapper.UserMapper" />
+    </bean>-->
+
+
+    <!--
+        mapper动态代理开发 扫描包(将包下面的mapper全部加载,包下面的子包也会扫描),
+        而且自带功能去spring容器中找sqlSessionFactory工厂类,不需要我们自己注入工厂
+
+        MapperFactoryBean: 这个类完成不了扫描包,需要换这个类MapperScannerConfigurer
+
+        获取动态生成mapper接口的实现类对象,传递mapper接口的class对象会直接获取对应mapper接口的实现类对象 
+        UserMapper mapper = applicationContext.getBean(UserMapper.class);
+
+    -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!--<property name="sqlSessionFactory" ref="sqlSessionFactory" />自动注入,可以不用写了-->
+
+        <!--注入基本包(mapper所在的包)-->
+        <property name="basePackage" value="com.demo.mapper" />
+    </bean>
+
+</beans>

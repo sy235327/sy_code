@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<!--hibernate核心配置-->
+<hibernate-configuration>
+    <!--必须配置一个session-factory标签，一个数据库对应一个session-factory标签-->
+    <session-factory>
+
+        <!--必须要配置的五个参数，4大参数 mysql驱动配置，数据库的方言-->
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://127.0.0.1:3306/hibernate_day01</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">123</property>
+        <!--数据库的方言（其他数据库的语句生成为指定数据的语句）-->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+
+        <!--可选的配置-->
+        <!--在控制台显示sql语句-->
+        <property name="hibernate.show_sql">true</property>
+        <!--显示的sql语句，格式化（不会全部在一行）-->
+        <property name="hibernate.format_sql">true</property>
+        <!--
+            name="hibernate.hbm2ddl.auto"
+            值
+            create:生成数据表结构,如果有表删除再创建
+            create-drop:生成数据表结构，执行完sql语句，删除表
+            update：如果没有表结构，创建表结构.如果有存在，不会创建，添加数据,如果字段不存在生成字段(一般使用)
+            validate: 校验映射文件中的javabean属性对应的数据库字段名称
+        -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+        <!--开启事务-->
+        <property name="hibernate.current_session_context_class">thread</property>
+
+        <!--映射配置文件 需要引入映射的配置文件-->
+        <mapping resource="com/demo/domain/Customer.hbm.xml"/>
+
+    </session-factory>
+</hibernate-configuration>

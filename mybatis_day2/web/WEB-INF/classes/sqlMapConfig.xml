@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+
+    <!--加载配置文件-->
+    <properties resource="jdbc.properties" />
+
+    <!--别名 在Mapper.xml中parameterType,resultType属性的参数类型可以直接写别名不需要写全路径了-->
+    <typeAliases>
+        <package name="com.demo.mybatis1.entity"></package>
+    </typeAliases>
+
+    <!-- 和spring整合后 environments配置将废除 -->
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC" />
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}" />
+                <property name="url" value="${jdbc.url}" />
+                <property name="username" value="${jdbc.username}" />
+                <property name="password" value="${jdbc.password}" />
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!--Mapper文件的位置-->
+    <mappers>
+        <package name="com.demo.mapper" />
+    </mappers>
+</configuration>
